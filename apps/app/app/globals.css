@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .glow {
+    box-shadow: 0 0 24px rgba(99, 102, 241, 0.4);
+  }
+  .glow-sm {
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+  }
+}

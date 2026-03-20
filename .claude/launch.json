@@ -2,7 +2,8 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "nashsklad",
+      "name": "nashsklad-landing",
+      "cwd": "apps/landing",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 5173,
