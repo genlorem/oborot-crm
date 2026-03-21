@@ -145,151 +145,147 @@ export default function Marketplace() {
         <p className="text-muted text-center text-sm mb-10">Привычный хаос vs понятный интерфейс</p>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Старый UI */}
-          <div className="rounded-2xl overflow-hidden border border-red-900/30">
-            {/* Верхнее меню с иконками */}
-            <div className="bg-gradient-to-b from-[#5a8db8] to-[#3b6fa0] px-2 py-2 flex items-end gap-0.5 overflow-hidden">
-              {[
-                { icon: '📊', label: 'Показатели' },
-                { icon: '🛒', label: 'Закупки' },
-                { icon: '📋', label: 'Продажи', active: true },
-                { icon: '📦', label: 'Товары' },
-                { icon: '👥', label: 'Контрагенты' },
-                { icon: '🏭', label: 'Склад' },
-                { icon: '💰', label: 'Деньги' },
-                { icon: '🏪', label: 'Розница' },
-                { icon: '🛍️', label: 'Онлайн' },
-                { icon: '⚙️', label: 'Произв.' },
-                { icon: '✅', label: 'Задачи' },
-              ].map(t => (
-                <div key={t.label} className={`flex flex-col items-center px-1.5 py-1 rounded-t ${t.active ? 'bg-white/20' : ''}`}>
-                  <span className="text-[10px]">{t.icon}</span>
-                  <span className="text-[7px] text-white/80 whitespace-nowrap">{t.label}</span>
+          {/* Старый UI — заполненный */}
+          <div className="rounded-2xl overflow-hidden border border-red-900/30 flex flex-col">
+            <div className="bg-gradient-to-b from-[#5a8db8] to-[#3b6fa0] px-2 py-1.5 flex items-end gap-0.5 overflow-hidden">
+              {['Показатели','Закупки','Продажи','Товары','Контрагенты','Склад','Деньги','Розница','Онлайн','Произв.','Задачи'].map((t, i) => (
+                <div key={t} className={`flex flex-col items-center px-1 py-0.5 rounded-t ${i === 2 ? 'bg-white/20' : ''}`}>
+                  <span className="text-[7px] text-white/80 whitespace-nowrap">{t}</span>
                 </div>
               ))}
             </div>
-            {/* Вкладки */}
-            <div className="bg-[#d4dce4] px-1 py-1 flex gap-0.5 border-b border-[#b0bec5] overflow-hidden">
+            <div className="bg-[#d4dce4] px-1 py-0.5 flex gap-0.5 border-b border-[#b0bec5] overflow-hidden">
               {['Заказы покупателей','Счета покупателям','Отгрузки','Отчёты комиссионера','Возвраты','Счета-фактуры','Прибыльность'].map(t => (
-                <span key={t} className="text-[7px] text-[#333] px-1 py-0.5 bg-[#c5d0da] border border-[#a0b0c0] whitespace-nowrap">{t}</span>
+                <span key={t} className="text-[6px] text-[#333] px-1 py-0.5 bg-[#c5d0da] border border-[#a0b0c0] whitespace-nowrap">{t}</span>
               ))}
             </div>
-            {/* Контент */}
-            <div className="bg-[#eef1f5] p-2">
-              <div className="flex items-center gap-1 mb-2 flex-wrap">
-                <span className="text-[8px] text-[#555] bg-white border border-[#ccc] px-1.5 py-0.5">Фильтр</span>
-                <span className="text-[7px] text-[#999] bg-white border border-[#ccc] px-1 py-0.5">Номер или комментарий</span>
-                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Контрагент ▾</span>
-                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Организация ▾</span>
-                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Статус ▾</span>
-                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Склад ▾</span>
-                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Печать ▾</span>
-                <span className="text-[7px] text-[#999] bg-white border border-[#ccc] px-1 py-0.5">⚙</span>
+            <div className="bg-[#eef1f5] p-1.5 flex-1">
+              <div className="flex items-center gap-0.5 mb-1.5 flex-wrap">
+                {['Фильтр','Номер','Контрагент ▾','Организация ▾','Статус ▾','Склад ▾','Канал ▾','Печать ▾','⚙'].map(t => (
+                  <span key={t} className="text-[6px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">{t}</span>
+                ))}
               </div>
-              <table className="w-full text-[7px] text-[#333]">
+              <table className="w-full text-[6px] text-[#333]">
                 <thead>
                   <tr className="bg-[#dde3ea] border-b border-[#c0c8d0]">
-                    {['☐','№','Время','Контрагент','Организация','Сумма','Оплачено','Отгружено','Статус'].map(h => (
-                      <th key={h} className="text-left px-1 py-1 font-normal text-[#666]">{h}</th>
+                    {['☐','№','Время','Контрагент','Орг-ция','Сумма','Оплач.','Отгруж.','Статус'].map(h => (
+                      <th key={h} className="text-left px-0.5 py-0.5 font-normal text-[#666]">{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { n: '00127', time: '21.03 14:32', agent: 'Розн. покуп...', org: 'ИП Иванов А.С.', sum: '14 200,00', paid: '14 200,00', ship: '14 200,00', status: 'Отгружен' },
-                    { n: '00126', time: '21.03 11:05', agent: 'ООО "Стиль"', org: 'ИП Иванов А.С.', sum: '8 750,00', paid: '0,00', ship: '0,00', status: 'Новый' },
-                    { n: '00125', time: '20.03 18:41', agent: 'Розн. покуп...', org: 'ИП Иванов А.С.', sum: '3 400,00', paid: '3 400,00', ship: '0,00', status: 'Подтверждён' },
+                    { n: '00127', time: '21.03 14:32', agent: 'Розн. покуп...', org: 'ИП Иванов', sum: '14 200', paid: '14 200', ship: '14 200', status: 'Отгружен' },
+                    { n: '00126', time: '21.03 11:05', agent: 'ООО Стиль', org: 'ИП Иванов', sum: '8 750', paid: '0', ship: '0', status: 'Новый' },
+                    { n: '00125', time: '20.03 18:41', agent: 'Розн. покуп...', org: 'ИП Иванов', sum: '3 400', paid: '3 400', ship: '0', status: 'Подтв.' },
+                    { n: '00124', time: '20.03 16:12', agent: 'ИП Петров', org: 'ИП Иванов', sum: '22 100', paid: '22 100', ship: '22 100', status: 'Отгружен' },
+                    { n: '00123', time: '20.03 09:44', agent: 'Розн. покуп...', org: 'ИП Иванов', sum: '5 600', paid: '5 600', ship: '5 600', status: 'Отгружен' },
+                    { n: '00122', time: '19.03 20:15', agent: 'ООО Маркет', org: 'ИП Иванов', sum: '17 300', paid: '0', ship: '0', status: 'Новый' },
+                    { n: '00121', time: '19.03 15:33', agent: 'Розн. покуп...', org: 'ИП Иванов', sum: '9 800', paid: '9 800', ship: '0', status: 'Подтв.' },
+                    { n: '00120', time: '19.03 11:07', agent: 'ООО Стиль', org: 'ИП Иванов', sum: '4 250', paid: '4 250', ship: '4 250', status: 'Отгружен' },
                   ].map((row, i) => (
                     <tr key={i} className={`${i % 2 === 0 ? 'bg-white' : 'bg-[#f8f9fa]'} border-b border-[#e0e0e0]`}>
-                      <td className="px-1 py-1">☐</td>
-                      <td className="px-1 py-1 text-[#1976d2]">{row.n}</td>
-                      <td className="px-1 py-1">{row.time}</td>
-                      <td className="px-1 py-1 text-[#999]">{row.agent}</td>
-                      <td className="px-1 py-1">{row.org}</td>
-                      <td className="px-1 py-1">{row.sum}</td>
-                      <td className="px-1 py-1">{row.paid}</td>
-                      <td className="px-1 py-1">{row.ship}</td>
-                      <td className="px-1 py-1">{row.status}</td>
+                      <td className="px-0.5 py-0.5">☐</td>
+                      <td className="px-0.5 py-0.5 text-[#1976d2]">{row.n}</td>
+                      <td className="px-0.5 py-0.5">{row.time}</td>
+                      <td className="px-0.5 py-0.5 text-[#999]">{row.agent}</td>
+                      <td className="px-0.5 py-0.5">{row.org}</td>
+                      <td className="px-0.5 py-0.5">{row.sum}</td>
+                      <td className="px-0.5 py-0.5">{row.paid}</td>
+                      <td className="px-0.5 py-0.5">{row.ship}</td>
+                      <td className="px-0.5 py-0.5">{row.status}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
-              <div className="text-[7px] text-[#999] mt-1">1-3 из 437</div>
+              <div className="text-[6px] text-[#999] mt-1">1-8 из 437 · Итого: 85 400,00</div>
             </div>
-            <div className="bg-[#eef1f5] px-3 py-2 text-center">
-              <span className="text-xs text-red-400 font-medium">😵 Знакомо?</span>
+            <div className="bg-[#dde3ea] px-3 py-1.5 text-center border-t border-[#c0c8d0]">
+              <span className="text-[10px] text-[#888]">Знакомо?</span>
             </div>
           </div>
 
-          {/* Новый UI — Оборот */}
-          <div className="rounded-2xl overflow-hidden border border-accent/30">
-            <div className="bg-[#0f0f13] px-4 py-3 flex items-center justify-between border-b border-border">
+          {/* Новый UI — Оборот, продажи */}
+          <div className="rounded-2xl overflow-hidden border border-accent/30 flex flex-col">
+            <div className="bg-[#0f0f13] px-4 py-2.5 flex items-center justify-between border-b border-border">
               <div className="flex items-center gap-2">
                 <div className="w-5 h-5 rounded bg-accent/80 flex items-center justify-center">
                   <span className="text-[8px] font-black text-white">ОБ</span>
                 </div>
-                <span className="text-[11px] font-semibold text-white">Аналитика</span>
+                <span className="text-[11px] font-semibold text-white">Продажи</span>
               </div>
-              {/* Быстрый выбор периода */}
               <div className="flex items-center gap-1">
-                <span className="text-[8px] text-muted bg-surface px-1.5 py-0.5 rounded">Вчера</span>
-                <span className="text-[8px] text-muted bg-surface px-1.5 py-0.5 rounded">7 дн</span>
-                <span className="text-[8px] text-white bg-accent/80 px-1.5 py-0.5 rounded font-medium">30 дн</span>
-                <span className="text-[8px] text-muted bg-surface px-1.5 py-0.5 rounded">90 дн</span>
-                <span className="text-[8px] text-muted bg-surface px-1.5 py-0.5 rounded border border-border">📅 21.02 — 21.03</span>
+                <span className="text-[7px] text-muted bg-surface px-1.5 py-0.5 rounded">Вчера</span>
+                <span className="text-[7px] text-muted bg-surface px-1.5 py-0.5 rounded">7 дн</span>
+                <span className="text-[7px] text-white bg-accent/80 px-1.5 py-0.5 rounded font-medium">30 дн</span>
+                <span className="text-[7px] text-muted bg-surface px-1.5 py-0.5 rounded">90 дн</span>
+                <span className="text-[7px] text-muted bg-surface px-1.5 py-0.5 rounded border border-border">21.02 — 21.03</span>
               </div>
             </div>
-            <div className="bg-[#0f0f13] p-4">
-              {/* Карточки метрик */}
-              <div className="grid grid-cols-4 gap-2 mb-4">
-                <div className="bg-surface rounded-lg p-2.5 border border-border">
-                  <div className="text-[9px] text-muted mb-1">Выручка</div>
-                  <div className="text-sm font-bold text-white">284 500 ₽</div>
-                  <div className="text-[9px] text-green-400">↑ 12% к пред.</div>
+            <div className="bg-[#0f0f13] p-3 flex-1">
+              <div className="grid grid-cols-4 gap-1.5 mb-3">
+                <div className="bg-surface rounded-lg p-2 border border-border">
+                  <div className="text-[8px] text-muted mb-0.5">Выручка</div>
+                  <div className="text-[12px] font-bold text-white">284 500 ₽</div>
+                  <div className="text-[8px] text-green-400">+12%</div>
                 </div>
-                <div className="bg-surface rounded-lg p-2.5 border border-border">
-                  <div className="text-[9px] text-muted mb-1">Чистая прибыль</div>
-                  <div className="text-sm font-bold text-white">108 500 ₽</div>
-                  <div className="text-[9px] text-green-400">↑ 18%</div>
+                <div className="bg-surface rounded-lg p-2 border border-border">
+                  <div className="text-[8px] text-muted mb-0.5">Прибыль</div>
+                  <div className="text-[12px] font-bold text-white">108 500 ₽</div>
+                  <div className="text-[8px] text-green-400">+18%</div>
                 </div>
-                <div className="bg-surface rounded-lg p-2.5 border border-border">
-                  <div className="text-[9px] text-muted mb-1">Ср. маржа</div>
-                  <div className="text-sm font-bold text-white">38.2%</div>
-                  <div className="text-[9px] text-green-400">↑ 2.1%</div>
+                <div className="bg-surface rounded-lg p-2 border border-border">
+                  <div className="text-[8px] text-muted mb-0.5">Маржа</div>
+                  <div className="text-[12px] font-bold text-white">38.2%</div>
+                  <div className="text-[8px] text-green-400">+2.1%</div>
                 </div>
-                <div className="bg-surface rounded-lg p-2.5 border border-border">
-                  <div className="text-[9px] text-muted mb-1">ROI на товар</div>
-                  <div className="text-sm font-bold text-white">214%</div>
-                  <div className="text-[9px] text-green-400">↑ 11%</div>
+                <div className="bg-surface rounded-lg p-2 border border-border">
+                  <div className="text-[8px] text-muted mb-0.5">ROI</div>
+                  <div className="text-[12px] font-bold text-white">214%</div>
+                  <div className="text-[8px] text-green-400">+11%</div>
                 </div>
               </div>
-              {/* Подзаголовок списка */}
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-[9px] text-muted">Топ по прибыли за 30 дней</span>
-                <span className="text-[9px] text-accent">все товары →</span>
-              </div>
-              {/* Список */}
-              <div className="space-y-1.5">
-                {[
-                  { name: 'Футболка оверсайз', mp: 'WB', sum: '12 400 ₽', margin: '42%', color: 'text-green-400' },
-                  { name: 'Худи базовое', mp: 'Ozon', sum: '8 900 ₽', margin: '35%', color: 'text-green-400' },
-                  { name: 'Шорты карго', mp: 'ЯМ', sum: '6 200 ₽', margin: '18%', color: 'text-yellow-400' },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between bg-surface rounded-lg px-3 py-2 border border-border">
-                    <div className="flex items-center gap-2">
-                      <div className="w-6 h-6 rounded bg-accent/10 flex items-center justify-center text-[8px] text-accent">{item.mp}</div>
-                      <span className="text-[11px] text-white">{item.name}</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className={`text-[10px] font-medium ${item.color}`}>{item.margin}</span>
-                      <span className="text-[11px] font-semibold text-white">{item.sum}</span>
-                    </div>
-                  </div>
-                ))}
+
+              {/* Таблица продаж */}
+              <table className="w-full text-[8px]">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-1.5 text-[7px] text-muted font-medium">Товар</th>
+                    <th className="text-left py-1.5 text-[7px] text-muted font-medium">МП</th>
+                    <th className="text-right py-1.5 text-[7px] text-muted font-medium">Продаж</th>
+                    <th className="text-right py-1.5 text-[7px] text-muted font-medium">Выручка</th>
+                    <th className="text-right py-1.5 text-[7px] text-muted font-medium">Маржа</th>
+                    <th className="text-right py-1.5 text-[7px] text-muted font-medium">Прибыль</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { name: 'Футболка оверсайз', mp: 'WB', mpColor: 'text-purple-400', sales: 142, rev: '89 400', margin: '42%', mColor: 'text-green-400', profit: '37 500' },
+                    { name: 'Худи базовое', mp: 'Ozon', mpColor: 'text-blue-400', sales: 98, rev: '64 200', margin: '35%', mColor: 'text-green-400', profit: '22 400' },
+                    { name: 'Брюки карго', mp: 'WB', mpColor: 'text-purple-400', sales: 76, rev: '45 600', margin: '41%', mColor: 'text-green-400', profit: '18 700' },
+                    { name: 'Шорты льняные', mp: 'ЯМ', mpColor: 'text-yellow-400', sales: 54, rev: '32 400', margin: '28%', mColor: 'text-yellow-400', profit: '9 100' },
+                    { name: 'Кепка бейсболка', mp: 'Ozon', mpColor: 'text-blue-400', sales: 89, rev: '26 700', margin: '52%', mColor: 'text-green-400', profit: '13 900' },
+                    { name: 'Носки набор 5шт', mp: 'WB', mpColor: 'text-purple-400', sales: 234, rev: '16 400', margin: '18%', mColor: 'text-red-400', profit: '2 950' },
+                    { name: 'Рубашка лён', mp: 'ЯМ', mpColor: 'text-yellow-400', sales: 31, rev: '9 800', margin: '33%', mColor: 'text-green-400', profit: '3 230' },
+                  ].map((row, i) => (
+                    <tr key={i} className="border-b border-border/50 hover:bg-surface/50">
+                      <td className="py-1.5 text-white">{row.name}</td>
+                      <td className={`py-1.5 ${row.mpColor} font-medium`}>{row.mp}</td>
+                      <td className="py-1.5 text-right text-muted">{row.sales}</td>
+                      <td className="py-1.5 text-right text-white">{row.rev} ₽</td>
+                      <td className={`py-1.5 text-right font-medium ${row.mColor}`}>{row.margin}</td>
+                      <td className="py-1.5 text-right text-white font-medium">{row.profit} ₽</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div className="flex items-center justify-between mt-2">
+                <span className="text-[7px] text-muted">7 из 48 товаров</span>
+                <span className="text-[7px] text-accent">показать все →</span>
               </div>
             </div>
-            <div className="bg-[#0f0f13] px-3 py-2 border-t border-border text-center">
-              <span className="text-xs text-accent font-medium">✨ Всё понятно с первого взгляда</span>
+            <div className="bg-[#0f0f13] px-3 py-1.5 border-t border-border text-center">
+              <span className="text-[10px] text-accent font-medium">Всё понятно с первого взгляда</span>
             </div>
           </div>
         </div>
