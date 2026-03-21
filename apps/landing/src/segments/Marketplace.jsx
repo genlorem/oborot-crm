@@ -147,7 +147,7 @@ export default function Marketplace() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Старый UI — заполненный */}
           <div className="rounded-2xl overflow-hidden border border-red-900/30 flex flex-col">
-            <div className="bg-[#036ce5] px-2 py-1.5 flex items-end gap-0.5 overflow-hidden">
+            <div className="bg-[#2075a8] px-2 py-1.5 flex items-end gap-0.5 overflow-hidden">
               {['Показатели','Закупки','Продажи','Товары','Контрагенты','Склад','Деньги','Розница','Онлайн','Произв.','Задачи'].map((t, i) => (
                 <div key={t} className={`flex flex-col items-center px-1 py-0.5 rounded-t ${i === 2 ? 'bg-white/20' : ''}`}>
                   <span className="text-[7px] text-white/80 whitespace-nowrap">{t}</span>
