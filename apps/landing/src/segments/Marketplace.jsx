@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const PAINS = [
-  { icon: '🐌', pain: 'МойСклад тормозит на 500+ SKU', fix: 'Оборот быстрый даже на 10 000 SKU' },
+  { icon: '🐌', pain: 'МойСклад тормозит на 500+ SKU', fix: 'Оборот быстрый даже на\u00a010\u00a0000\u00a0SKU' },
   { icon: '🧩', pain: 'Интерфейс из 2010-го — не разобраться', fix: 'Разберёшься за 5 минут, без обучения' },
   { icon: '🔌', pain: 'Интеграции с МП — платные и кривые', fix: 'WB, Ozon и ЯМ работают из коробки' },
   { icon: '📊', pain: 'Нет аналитики — считаешь в Excel', fix: 'Маржа и ROI по каждому SKU автоматически' },
@@ -77,7 +77,7 @@ export default function Marketplace() {
       {/* Hero */}
       <section className="px-6 pt-16 pb-20 max-w-3xl mx-auto text-center animate-fade-in">
         <div className="inline-flex items-center gap-2 bg-accent-glow border border-accent/30 rounded-full px-4 py-1.5 text-xs text-accent font-medium mb-8">
-          Надоело мучиться с МойСклад?
+          🎁 Бесплатно для первых 500
         </div>
 
         <h1 className="text-4xl sm:text-5xl font-black leading-tight mb-5">
