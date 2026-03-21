@@ -147,66 +147,74 @@ export default function Marketplace() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Старый UI */}
           <div className="rounded-2xl overflow-hidden border border-red-900/30">
-            <div className="bg-[#3b6fa0] px-3 py-1.5 flex items-center gap-2">
-              <div className="flex gap-1">
-                {['Показатели','Закупки','Продажи','Товары','Склад','Деньги'].map(t => (
-                  <span key={t} className="text-[9px] text-white/80 px-1.5 py-0.5">{t}</span>
-                ))}
-              </div>
-            </div>
-            <div className="bg-[#d4dce4] px-2 py-1 flex gap-1 border-b border-[#b0bec5]">
-              {['Точки продаж','Смены','Продажи','Возвраты','Внесения','Выплаты'].map(t => (
-                <span key={t} className="text-[8px] text-[#333] px-1 py-0.5 bg-[#c5d0da] border border-[#a0b0c0]">{t}</span>
+            {/* Верхнее меню с иконками */}
+            <div className="bg-gradient-to-b from-[#5a8db8] to-[#3b6fa0] px-2 py-2 flex items-end gap-0.5 overflow-hidden">
+              {[
+                { icon: '📊', label: 'Показатели' },
+                { icon: '🛒', label: 'Закупки' },
+                { icon: '📋', label: 'Продажи', active: true },
+                { icon: '📦', label: 'Товары' },
+                { icon: '👥', label: 'Контрагенты' },
+                { icon: '🏭', label: 'Склад' },
+                { icon: '💰', label: 'Деньги' },
+                { icon: '🏪', label: 'Розница' },
+                { icon: '🛍️', label: 'Онлайн' },
+                { icon: '⚙️', label: 'Произв.' },
+                { icon: '✅', label: 'Задачи' },
+              ].map(t => (
+                <div key={t.label} className={`flex flex-col items-center px-1.5 py-1 rounded-t ${t.active ? 'bg-white/20' : ''}`}>
+                  <span className="text-[10px]">{t.icon}</span>
+                  <span className="text-[7px] text-white/80 whitespace-nowrap">{t.label}</span>
+                </div>
               ))}
             </div>
+            {/* Вкладки */}
+            <div className="bg-[#d4dce4] px-1 py-1 flex gap-0.5 border-b border-[#b0bec5] overflow-hidden">
+              {['Заказы покупателей','Счета покупателям','Отгрузки','Отчёты комиссионера','Возвраты','Счета-фактуры','Прибыльность'].map(t => (
+                <span key={t} className="text-[7px] text-[#333] px-1 py-0.5 bg-[#c5d0da] border border-[#a0b0c0] whitespace-nowrap">{t}</span>
+              ))}
+            </div>
+            {/* Контент */}
             <div className="bg-[#eef1f5] p-2">
-              <div className="flex items-center gap-1 mb-2">
-                <span className="text-[9px] text-[#555] bg-white border border-[#ccc] px-1.5 py-0.5">Фильтр</span>
-                <span className="text-[8px] text-[#999] bg-white border border-[#ccc] px-1 py-0.5">Номер или комментарий</span>
-                <span className="text-[8px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Статус ▾</span>
-                <span className="text-[8px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Печать ▾</span>
-                <span className="text-[8px] text-[#999] bg-white border border-[#ccc] px-1 py-0.5">⚙</span>
+              <div className="flex items-center gap-1 mb-2 flex-wrap">
+                <span className="text-[8px] text-[#555] bg-white border border-[#ccc] px-1.5 py-0.5">Фильтр</span>
+                <span className="text-[7px] text-[#999] bg-white border border-[#ccc] px-1 py-0.5">Номер или комментарий</span>
+                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Контрагент ▾</span>
+                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Организация ▾</span>
+                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Статус ▾</span>
+                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Склад ▾</span>
+                <span className="text-[7px] text-[#555] bg-white border border-[#ccc] px-1 py-0.5">Печать ▾</span>
+                <span className="text-[7px] text-[#999] bg-white border border-[#ccc] px-1 py-0.5">⚙</span>
               </div>
-              <table className="w-full text-[8px] text-[#333]">
+              <table className="w-full text-[7px] text-[#333]">
                 <thead>
                   <tr className="bg-[#dde3ea] border-b border-[#c0c8d0]">
-                    {['№','Время','Точка','Контрагент','Организация','Сумма нал.','Сумма безнал.','Итого','Валюта'].map(h => (
+                    {['☐','№','Время','Контрагент','Организация','Сумма','Оплачено','Отгружено','Статус'].map(h => (
                       <th key={h} className="text-left px-1 py-1 font-normal text-[#666]">{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="bg-white border-b border-[#e0e0e0]">
-                    <td className="px-1 py-1 text-[#1976d2]">00042</td>
-                    <td className="px-1 py-1">28.01 21:27</td>
-                    <td className="px-1 py-1">Точка 1</td>
-                    <td className="px-1 py-1 text-[#999]">Розн. пок...</td>
-                    <td className="px-1 py-1">ИП Иванов</td>
-                    <td className="px-1 py-1">2 900,00</td>
-                    <td className="px-1 py-1">0,00</td>
-                    <td className="px-1 py-1 font-medium">2 900,00</td>
-                    <td className="px-1 py-1">руб</td>
-                  </tr>
-                  <tr className="bg-[#f8f9fa] border-b border-[#e0e0e0]">
-                    <td className="px-1 py-1 text-[#1976d2]">00041</td>
-                    <td className="px-1 py-1">28.01 12:18</td>
-                    <td className="px-1 py-1">Точка 1</td>
-                    <td className="px-1 py-1 text-[#999]">Розн. пок...</td>
-                    <td className="px-1 py-1">ИП Иванов</td>
-                    <td className="px-1 py-1">6 500,00</td>
-                    <td className="px-1 py-1">0,00</td>
-                    <td className="px-1 py-1 font-medium">6 500,00</td>
-                    <td className="px-1 py-1">руб</td>
-                  </tr>
-                  <tr className="bg-[#eef1f5]">
-                    <td colSpan={5} className="px-1 py-1 text-[#999]">1-2 из 2</td>
-                    <td className="px-1 py-1 font-bold">9 400,00</td>
-                    <td className="px-1 py-1 font-bold">0,00</td>
-                    <td className="px-1 py-1 font-bold">9 400,00</td>
-                    <td></td>
-                  </tr>
+                  {[
+                    { n: '00127', time: '21.03 14:32', agent: 'Розн. покуп...', org: 'ИП Иванов А.С.', sum: '14 200,00', paid: '14 200,00', ship: '14 200,00', status: 'Отгружен' },
+                    { n: '00126', time: '21.03 11:05', agent: 'ООО "Стиль"', org: 'ИП Иванов А.С.', sum: '8 750,00', paid: '0,00', ship: '0,00', status: 'Новый' },
+                    { n: '00125', time: '20.03 18:41', agent: 'Розн. покуп...', org: 'ИП Иванов А.С.', sum: '3 400,00', paid: '3 400,00', ship: '0,00', status: 'Подтверждён' },
+                  ].map((row, i) => (
+                    <tr key={i} className={`${i % 2 === 0 ? 'bg-white' : 'bg-[#f8f9fa]'} border-b border-[#e0e0e0]`}>
+                      <td className="px-1 py-1">☐</td>
+                      <td className="px-1 py-1 text-[#1976d2]">{row.n}</td>
+                      <td className="px-1 py-1">{row.time}</td>
+                      <td className="px-1 py-1 text-[#999]">{row.agent}</td>
+                      <td className="px-1 py-1">{row.org}</td>
+                      <td className="px-1 py-1">{row.sum}</td>
+                      <td className="px-1 py-1">{row.paid}</td>
+                      <td className="px-1 py-1">{row.ship}</td>
+                      <td className="px-1 py-1">{row.status}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
+              <div className="text-[7px] text-[#999] mt-1">1-3 из 437</div>
             </div>
             <div className="bg-[#eef1f5] px-3 py-2 text-center">
               <span className="text-xs text-red-400 font-medium">😵 Знакомо?</span>
@@ -220,12 +228,15 @@ export default function Marketplace() {
                 <div className="w-5 h-5 rounded bg-accent/80 flex items-center justify-center">
                   <span className="text-[8px] font-black text-white">ОБ</span>
                 </div>
-                <span className="text-[11px] font-semibold text-white">Продажи</span>
+                <span className="text-[11px] font-semibold text-white">Аналитика</span>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="text-[9px] text-muted">Сегодня</span>
-                <span className="text-[9px] text-muted">Неделя</span>
-                <span className="text-[9px] text-accent border-b border-accent pb-0.5">Месяц</span>
+              {/* Быстрый выбор периода */}
+              <div className="flex items-center gap-1">
+                <span className="text-[8px] text-muted bg-surface px-1.5 py-0.5 rounded">Вчера</span>
+                <span className="text-[8px] text-muted bg-surface px-1.5 py-0.5 rounded">7 дн</span>
+                <span className="text-[8px] text-white bg-accent/80 px-1.5 py-0.5 rounded font-medium">30 дн</span>
+                <span className="text-[8px] text-muted bg-surface px-1.5 py-0.5 rounded">90 дн</span>
+                <span className="text-[8px] text-muted bg-surface px-1.5 py-0.5 rounded border border-border">📅 21.02 — 21.03</span>
               </div>
             </div>
             <div className="bg-[#0f0f13] p-4">
@@ -234,28 +245,28 @@ export default function Marketplace() {
                 <div className="bg-surface rounded-lg p-2.5 border border-border">
                   <div className="text-[9px] text-muted mb-1">Выручка</div>
                   <div className="text-sm font-bold text-white">284 500 ₽</div>
-                  <div className="text-[9px] text-green-400">↑ 12%</div>
+                  <div className="text-[9px] text-green-400">↑ 12% к пред.</div>
                 </div>
                 <div className="bg-surface rounded-lg p-2.5 border border-border">
-                  <div className="text-[9px] text-muted mb-1">Маржа</div>
+                  <div className="text-[9px] text-muted mb-1">Чистая прибыль</div>
+                  <div className="text-sm font-bold text-white">108 500 ₽</div>
+                  <div className="text-[9px] text-green-400">↑ 18%</div>
+                </div>
+                <div className="bg-surface rounded-lg p-2.5 border border-border">
+                  <div className="text-[9px] text-muted mb-1">Ср. маржа</div>
                   <div className="text-sm font-bold text-white">38.2%</div>
                   <div className="text-[9px] text-green-400">↑ 2.1%</div>
                 </div>
                 <div className="bg-surface rounded-lg p-2.5 border border-border">
-                  <div className="text-[9px] text-muted mb-1">Заказов</div>
-                  <div className="text-sm font-bold text-white">437</div>
-                  <div className="text-[9px] text-green-400">↑ 8%</div>
-                </div>
-                <div className="bg-surface rounded-lg p-2.5 border border-border">
-                  <div className="text-[9px] text-muted mb-1">Рейтинг</div>
-                  <div className="text-sm font-bold text-white">4.8 ★</div>
-                  <div className="text-[9px] text-green-400">↑ 0.3</div>
+                  <div className="text-[9px] text-muted mb-1">ROI на товар</div>
+                  <div className="text-sm font-bold text-white">214%</div>
+                  <div className="text-[9px] text-green-400">↑ 11%</div>
                 </div>
               </div>
-              {/* Период */}
+              {/* Подзаголовок списка */}
               <div className="flex items-center justify-between mb-3">
-                <span className="text-[9px] text-muted">Топ товаров за март 2026</span>
-                <span className="text-[9px] text-muted">01.03 — 21.03</span>
+                <span className="text-[9px] text-muted">Топ по прибыли за 30 дней</span>
+                <span className="text-[9px] text-accent">все товары →</span>
               </div>
               {/* Список */}
               <div className="space-y-1.5">
