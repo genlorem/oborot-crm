@@ -240,7 +240,7 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="border-t border-border px-6 py-8 text-center text-xs text-muted">
-        <p>Оборот · Строим вместе с продавцами</p>
+        <p>Оборот · Строим вместе с продавцами · <Link to="/roadmap" className="hover:text-white transition-colors">Роадмап →</Link></p>
       </footer>
     </div>
   )
