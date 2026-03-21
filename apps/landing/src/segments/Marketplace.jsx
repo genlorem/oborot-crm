@@ -81,13 +81,16 @@ export default function Marketplace() {
         </div>
 
         <h1 className="text-4xl sm:text-5xl font-black leading-tight mb-5">
-          Замени МойСклад<br />
-          <span className="text-accent">за 20 минут</span>
+          Управляй бизнесом,<br />
+          <span className="text-accent">а не системой учёта</span>
         </h1>
 
-        <p className="text-lg text-muted leading-relaxed mb-10 max-w-xl mx-auto">
-          Оборот — бизнес-CRM, которая знает WB, Ozon и Яндекс.Маркет из коробки.
-          Без настроек. Без доплат. Без боли.
+        <p className="text-lg text-muted leading-relaxed mb-4 max-w-xl mx-auto">
+          Оборот делает за тебя то, что в других системах занимает часы.
+          Подключил — работает.
+        </p>
+        <p className="text-sm text-muted/70 mb-10">
+          Всё что есть в сложных системах + интеграции с WB, Ozon и ЯМ из коробки. Без доплат.
         </p>
 
         {/* Form */}
