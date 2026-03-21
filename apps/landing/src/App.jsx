@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Landing from './landing/Landing'
 import Form from './form/pages/Form'
 import Roadmap from './roadmap/Roadmap'
+import Marketplace from './segments/Marketplace'
 
 export default function App() {
   return (
@@ -10,6 +11,7 @@ export default function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/form" element={<Form />} />
         <Route path="/roadmap" element={<Roadmap />} />
+        <Route path="/for/marketplace" element={<Marketplace />} />
       </Routes>
     </BrowserRouter>
   )

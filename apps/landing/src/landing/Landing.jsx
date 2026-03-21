@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const EARLY_BIRD_LIMIT = 500
-const EARLY_BIRD_TAKEN = 213 // обновляй по мере роста
+const EARLY_BIRD_TAKEN = 213
 
 const EARLY_BIRD_PERKS = [
   { emoji: '🎁', title: '6 месяцев бесплатно', desc: 'Полный доступ ко всем функциям без оплаты — сразу после запуска.' },
@@ -11,27 +11,27 @@ const EARLY_BIRD_PERKS = [
   { emoji: '⚡', title: 'Ранний доступ к бете', desc: 'Попадёшь в продукт первым — до публичного запуска.' },
 ]
 
-const FEATURES = [
-  { emoji: '⚡', title: 'Реалтайм остатки', desc: 'Все склады и маркетплейсы в одном экране. Без обновления страницы.' },
-  { emoji: '🧠', title: 'Умное прогнозирование', desc: 'Система сама скажет что и когда заказывать — до того как закончится.' },
-  { emoji: '📈', title: 'Юнит-экономика по SKU', desc: 'Прибыль, маржа и ROI по каждому товару — автоматически.' },
-  { emoji: '📱', title: 'Нормальная мобилка', desc: 'Полноценное мобильное приложение, не урезанная версия.' },
-  { emoji: '✨', title: 'Интерфейс за 5 минут', desc: 'Новый сотрудник разберётся сам. Без обучения и инструкций.' },
-  { emoji: '🔌', title: 'Все маркетплейсы', desc: 'WB, Ozon, ЯМ в реальном времени. Без лишних действий.' },
+const MODULES = [
+  { emoji: '📦', title: 'Учёт товаров', desc: 'Остатки, приёмки, перемещения — реалтайм по всем точкам.' },
+  { emoji: '📊', title: 'Аналитика', desc: 'Маржа, ROI и юнит-экономика по каждому SKU автоматически.' },
+  { emoji: '🧠', title: 'Прогнозирование', desc: 'Система скажет что и когда заказывать — до того как закончится.' },
+  { emoji: '💰', title: 'Финансы', desc: 'Выручка, прибыль, расходы — полная картина бизнеса.' },
+  { emoji: '👥', title: 'Команда', desc: 'Роли, доступы, задачи. Каждый видит только своё.' },
+  { emoji: '🔌', title: 'Интеграции', desc: 'WB, Ozon, ЯМ, 1С, банки — всё подключено из коробки.' },
 ]
 
-const PAINS = [
-  { pain: 'Тормозит и лагает', fix: 'Быстрый даже на 10 000 SKU' },
-  { pain: 'Не разобраться без обучения', fix: 'Интуитивный как iPhone' },
-  { pain: 'Нет нормальной аналитики', fix: 'Дашборд CEO прямо на главной' },
-  { pain: 'Плохая интеграция с МП', fix: 'Нативная синхронизация' },
+const COMPARE = [
+  { them: 'Только учёт товаров',         us: 'Учёт + аналитика + финансы + команда' },
+  { them: 'Тормозит на 1000 SKU',        us: 'Быстрый даже на 10 000 SKU' },
+  { them: 'Интеграции — за доп. плату',   us: 'Все интеграции включены' },
+  { them: 'Онбординг — 2 недели',         us: 'Разберётся за 5 минут' },
 ]
 
 export default function Landing() {
   const [contact, setContact] = useState('')
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [count] = useState(Math.floor(Math.random() * 40) + 180) // 180-220 для соцдоказательства
+  const [count] = useState(Math.floor(Math.random() * 40) + 180)
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -42,7 +42,6 @@ export default function Landing() {
     const tgBotToken = import.meta.env.VITE_TG_BOT_TOKEN
     const tgChatId = import.meta.env.VITE_TG_CHAT_ID
 
-    // Google Sheets
     if (webhookUrl) {
       try {
         await fetch(webhookUrl, {
@@ -53,7 +52,6 @@ export default function Landing() {
       } catch (e) { console.error(e) }
     }
 
-    // Telegram уведомление
     if (tgBotToken && tgChatId) {
       try {
         await fetch(`https://api.telegram.org/bot${tgBotToken}/sendMessage`, {
@@ -76,18 +74,24 @@ export default function Landing() {
     <div className="min-h-screen bg-bg text-white">
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 py-5 max-w-5xl mx-auto">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center glow-sm">
             <span className="text-sm font-black text-white">ОБ</span>
           </div>
-          <span className="font-bold text-white">Оборот</span>
+          <div className="flex flex-col">
+            <span className="font-bold text-white leading-none">Оборот</span>
+            <span className="text-[10px] text-muted leading-none mt-0.5">бизнес-CRM</span>
+          </div>
         </div>
-        <Link
-          to="/form"
-          className="text-sm text-muted hover:text-white transition-colors"
-        >
-          Пройти анкету →
-        </Link>
+        <div className="flex items-center gap-4">
+          <Link to="/roadmap" className="text-sm text-muted hover:text-white transition-colors hidden sm:block">Роадмап</Link>
+          <Link
+            to="/form"
+            className="text-sm text-muted hover:text-white transition-colors"
+          >
+            Пройти анкету →
+          </Link>
+        </div>
       </nav>
 
       {/* Hero */}
@@ -97,13 +101,15 @@ export default function Landing() {
         </div>
 
         <h1 className="text-4xl sm:text-5xl font-black leading-tight mb-5">
-          Управление складом,<br />
-          <span className="text-accent">которое не бесит</span>
+          Не учёт товаров.<br />
+          <span className="text-accent">Управление бизнесом.</span>
         </h1>
 
-        <p className="text-lg text-muted leading-relaxed mb-10 max-w-xl mx-auto">
-          Быстрый инструмент для продавцов маркетплейсов. Простой как iPhone, умный как аналитик.
-          Без боли, без обучения, без зависших страниц.
+        <p className="text-lg text-muted leading-relaxed mb-4 max-w-xl mx-auto">
+          Бизнес-CRM для тех, кто продаёт. Учёт, аналитика, прогноз и команда — в одном месте.
+        </p>
+        <p className="text-sm text-muted/70 mb-10">
+          Нативные интеграции с WB, Ozon и Яндекс.Маркет из коробки. Без доплат.
         </p>
 
         {/* Waitlist form */}
@@ -111,9 +117,7 @@ export default function Landing() {
           <div className="animate-slide-up flex flex-col items-center gap-3">
             <div className="text-4xl">🎉</div>
             <p className="text-lg font-bold text-white">Ты в списке!</p>
-            <p className="text-sm text-muted">Расскажем как только запустимся. Следи в{' '}
-              <a href="https://t.me/topseller" target="_blank" rel="noopener noreferrer" className="text-accent underline">topseller</a>
-            </p>
+            <p className="text-sm text-muted">Расскажем как только запустимся.</p>
             <Link
               to="/form"
               className="mt-4 text-sm bg-surface border border-border px-5 py-2.5 rounded-xl hover:border-accent/50 transition-all"
@@ -141,16 +145,14 @@ export default function Landing() {
         )}
 
         <p className="text-xs text-muted mt-4">
-          Уже записались <span className="text-white font-semibold">{count} продавцов</span> · 6 месяцев бесплатно · Без спама
+          Уже записались <span className="text-white font-semibold">{count} предпринимателей</span> · 6 месяцев бесплатно · Без спама
         </p>
       </section>
 
       {/* Early Bird */}
       <section className="px-6 py-16 max-w-4xl mx-auto">
         <div className="bg-surface border border-accent/30 rounded-3xl p-8 relative overflow-hidden">
-          {/* Glow background */}
           <div className="absolute inset-0 bg-accent-glow rounded-3xl pointer-events-none" />
-
           <div className="relative">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
               <div>
@@ -160,23 +162,15 @@ export default function Landing() {
                 <h2 className="text-2xl font-bold text-white">Плюшки ранних пользователей</h2>
                 <p className="text-muted text-sm mt-1">Записался сейчас — получаешь всё это при запуске</p>
               </div>
-
-              {/* Progress bar spots */}
               <div className="sm:text-right shrink-0">
                 <div className="text-3xl font-black text-white">{EARLY_BIRD_TAKEN}</div>
                 <div className="text-xs text-muted">из {EARLY_BIRD_LIMIT} мест занято</div>
                 <div className="mt-2 w-40 h-1.5 bg-border rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-accent rounded-full"
-                    style={{ width: `${(EARLY_BIRD_TAKEN / EARLY_BIRD_LIMIT) * 100}%` }}
-                  />
+                  <div className="h-full bg-accent rounded-full" style={{ width: `${(EARLY_BIRD_TAKEN / EARLY_BIRD_LIMIT) * 100}%` }} />
                 </div>
-                <div className="text-xs text-accent font-medium mt-1">
-                  Осталось {EARLY_BIRD_LIMIT - EARLY_BIRD_TAKEN} мест
-                </div>
+                <div className="text-xs text-accent font-medium mt-1">Осталось {EARLY_BIRD_LIMIT - EARLY_BIRD_TAKEN} мест</div>
               </div>
             </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {EARLY_BIRD_PERKS.map((perk, i) => (
                 <div key={i} className="flex gap-3 bg-bg/60 rounded-2xl p-4 border border-border">
@@ -192,32 +186,32 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* МойСклад vs НашСклад */}
+      {/* 6 модулей */}
       <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-bold text-center mb-10">МойСклад → Оборот</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          {PAINS.map((item, i) => (
-            <div key={i} className="bg-surface border border-border rounded-2xl p-5 flex gap-4">
-              <div className="flex-none">
-                <div className="text-xs text-muted line-through mb-1">{item.pain}</div>
-                <div className="text-sm font-semibold text-white flex items-center gap-1.5">
-                  <span className="text-accent">✓</span> {item.fix}
-                </div>
-              </div>
+        <h2 className="text-2xl font-bold text-center mb-3">Всё что нужно бизнесу — внутри</h2>
+        <p className="text-muted text-center text-sm mb-10">Один инструмент вместо пяти. Без лишних подписок.</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {MODULES.map((m, i) => (
+            <div key={i} className="bg-surface border border-border rounded-2xl p-5 card-hover">
+              <div className="text-3xl mb-3">{m.emoji}</div>
+              <h3 className="font-bold text-white mb-1">{m.title}</h3>
+              <p className="text-sm text-muted leading-relaxed">{m.desc}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Features */}
+      {/* Сравнение */}
       <section className="px-6 py-16 max-w-4xl mx-auto">
-        <h2 className="text-2xl font-bold text-center mb-10">Что будет внутри</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {FEATURES.map((f, i) => (
-            <div key={i} className="bg-surface border border-border rounded-2xl p-5 card-hover">
-              <div className="text-3xl mb-3">{f.emoji}</div>
-              <h3 className="font-bold text-white mb-1">{f.title}</h3>
-              <p className="text-sm text-muted leading-relaxed">{f.desc}</p>
+        <h2 className="text-2xl font-bold text-center mb-3">Старый подход vs Оборот</h2>
+        <p className="text-muted text-center text-sm mb-10">Почему предприниматели переходят</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {COMPARE.map((item, i) => (
+            <div key={i} className="bg-surface border border-border rounded-2xl p-5">
+              <div className="text-xs text-muted line-through mb-2">{item.them}</div>
+              <div className="text-sm font-semibold text-white flex items-center gap-1.5">
+                <span className="text-accent">✓</span> {item.us}
+              </div>
             </div>
           ))}
         </div>
@@ -240,7 +234,7 @@ export default function Landing() {
 
       {/* Footer */}
       <footer className="border-t border-border px-6 py-8 text-center text-xs text-muted">
-        <p>Оборот · Строим вместе с продавцами · <Link to="/roadmap" className="hover:text-white transition-colors">Роадмап →</Link></p>
+        <p>Оборот · Бизнес-CRM · <Link to="/roadmap" className="hover:text-white transition-colors">Роадмап →</Link></p>
       </footer>
     </div>
   )
