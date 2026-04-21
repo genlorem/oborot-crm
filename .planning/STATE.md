@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-03-PLAN.md
-last_updated: "2026-04-21T09:02:00.878Z"
+stopped_at: Completed 01-04-PLAN.md
+last_updated: "2026-04-21T09:06:30.000Z"
 last_activity: 2026-04-21
 progress:
   total_phases: 7
   completed_phases: 0
   total_plans: 8
-  completed_plans: 3
-  percent: 38
+  completed_plans: 4
+  percent: 50
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-04-21)
 ## Current Position
 
 Phase: 01 (Foundation & Repo Cleanup) — EXECUTING
-Plan: 4 of 8
+Plan: 5 of 8
 Status: Ready to execute
 Last activity: 2026-04-21
 
-Progress: [████░░░░░░] 38%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
@@ -55,6 +55,7 @@ Progress: [████░░░░░░] 38%
 | Phase 01 P01 | 2min | 3 tasks | 3 files |
 | Phase 01 P02 | 2min | 3 tasks | 6 files |
 | Phase 01 P03 | 4min | 3 tasks tasks | 15 files files |
+| Phase 01 P04 | 2min | 2 tasks | 12 files |
 
 ## Accumulated Context
 
@@ -77,6 +78,10 @@ Recent decisions affecting current work:
 - Plan 01-03: Zod v4 API — use .issues not .errors (v3→v4 rename); applied to both env validators
 - Plan 01-03: main.jsx uses dynamic import().then/.catch (not top-level await) — Vite ES2020 target rejects TLA
 - Plan 01-03: two atomic commits — feat(env) covers Zod+validators+.env.example (12 files), docs covers READMEs (3 files); both bisect-safe
+- Plan 01-04: single combined commit per plan Step H — Vitest 3.2.4 + RTL 16.3.2 in both workspaces; 8 tests total (landing 6, app 2); plan's verify regex matches exactly `test: add Vitest + smoke + unit tests (landing + app)`
+- Plan 01-04: Zod v4 `.issues` + Vite TLA gotchas from Wave 3 stayed dormant — env.test.js uses Vitest runtime (no Vite build path), env validator's `.issues` already fixed in Plan 03
+- Plan 01-04: `typeof RootLayout === 'function'` smoke instead of render — avoids jsdom nested-html crash (RESEARCH Pitfall 4)
+- Plan 01-04: app vitest.setup.js pre-populates synthetic `NEXT_PUBLIC_SUPABASE_*` so RootLayout's `import '../lib/env'` side-effect survives test boot
 
 ### Pending Todos
 
@@ -112,8 +117,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-04-21T09:02:00.874Z
-Stopped at: Completed 01-03-PLAN.md
+Last session: 2026-04-21T09:06:30.000Z
+Stopped at: Completed 01-04-PLAN.md
 Resume file: None
 
 **Planned Phase:** 1 (Foundation & Repo Cleanup) — 8 plans — 2026-04-21T05:12:34.537Z
