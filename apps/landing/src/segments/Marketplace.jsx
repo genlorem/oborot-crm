@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import * as Sentry from '@sentry/react'
 
 const PAINS = [
   { icon: '🐌', pain: 'Система тормозит на 500+ SKU', fix: 'Оборот быстрый даже на\u00a010\u00a0000\u00a0SKU' },
@@ -37,7 +38,7 @@ export default function Marketplace() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ type: 'waitlist', contact, source: 'marketplace', date: new Date().toISOString() }),
         })
-      } catch (e) { console.error(e) }
+      } catch (e) { Sentry.captureException(e, { tags: { op: 'sheets-webhook', page: 'marketplace' } }) }
     }
 
     if (tgBotToken && tgChatId) {
@@ -51,7 +52,7 @@ export default function Marketplace() {
             parse_mode: 'HTML',
           }),
         })
-      } catch (e) { console.error(e) }
+      } catch (e) { Sentry.captureException(e, { tags: { op: 'telegram-notify', page: 'marketplace' } }) }
     }
 
     setLoading(false)

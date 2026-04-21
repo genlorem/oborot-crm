@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import * as Sentry from '@sentry/react'
 import { STEPS } from '../data/questions'
 
 export function useForm() {
@@ -68,7 +69,7 @@ export function useForm() {
           }),
         })
       } catch (e) {
-        console.error('Submit error:', e)
+        Sentry.captureException(e, { tags: { op: 'form-submit' } })
       }
     }
     setSubmitting(false)

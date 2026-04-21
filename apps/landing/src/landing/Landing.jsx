@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import * as Sentry from '@sentry/react'
 
 const EARLY_BIRD_LIMIT = 500
 const EARLY_BIRD_TAKEN = 213
@@ -49,7 +50,7 @@ export default function Landing() {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ type: 'waitlist', contact, date: new Date().toISOString() }),
         })
-      } catch (e) { console.error(e) }
+      } catch (e) { Sentry.captureException(e, { tags: { op: 'sheets-webhook' } }) }
     }
 
     if (tgBotToken && tgChatId) {
@@ -63,7 +64,7 @@ export default function Landing() {
             parse_mode: 'HTML',
           }),
         })
-      } catch (e) { console.error(e) }
+      } catch (e) { Sentry.captureException(e, { tags: { op: 'telegram-notify' } }) }
     }
 
     setLoading(false)
