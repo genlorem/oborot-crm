@@ -42,8 +42,8 @@
   4. Ошибки на проде (оба приложения) видны в Sentry или аналоге, не только в консоли браузера пользователя
   5. Landing отдаётся как статика за CDN/edge (не `vite preview` на Railway)
 **Plans**: 8 plans
-- [ ] 01-01-PLAN.md — Repo cleanup: .gitignore + delete 18 stale root files + remove unused framer-motion
-- [ ] 01-02-PLAN.md — Rebrand nashsklad → oborot across package.json, Google Apps Script header, launch.json, lockfile
+- [x] 01-01-PLAN.md — Repo cleanup: .gitignore + delete 18 stale root files + remove unused framer-motion
+- [x] 01-02-PLAN.md — Rebrand nashsklad → oborot across package.json, Google Apps Script header, launch.json, lockfile
 - [ ] 01-03-PLAN.md — Zod env validators + root .env.example + per-app READMEs (10-min onboarding)
 - [ ] 01-04-PLAN.md — Vitest + RTL: smoke tests + useForm unit coverage + env.test
 - [ ] 01-05-PLAN.md — Sentry SDK install + init (both apps, client/server/edge) + console.error migration
@@ -134,7 +134,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Repo Cleanup | 1/8 | In progress | - |
+| 1. Foundation & Repo Cleanup | 2/8 | In progress | - |
 | 2. Lead Capture Migration + Demo Mode | 0/TBD | Not started | - |
 | 3. Auth & Multi-Tenant Foundation | 0/TBD | Not started | - |
 | 4. Module Architecture + First Two Modules | 0/TBD | Not started | - |
