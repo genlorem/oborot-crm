@@ -12,8 +12,15 @@ export class EnvError extends Error {
   }
 }
 
+// VITE_SHEETS_WEBHOOK_URL is optional: Phase 2 LEAD-01 migrates lead capture
+// to Supabase, so a missing GAS webhook is a valid runtime state — Landing.jsx
+// already short-circuits on falsy webhookUrl. Empty string is coerced to
+// undefined so CF Pages can omit the var cleanly.
 const schema = z.object({
-  VITE_SHEETS_WEBHOOK_URL: z.string().url(),
+  VITE_SHEETS_WEBHOOK_URL: z.preprocess(
+    (v) => (v === '' ? undefined : v),
+    z.string().url().optional(),
+  ),
   VITE_TG_BOT_TOKEN: z.string().min(10),
   VITE_TG_CHAT_ID: z.string().min(1),
   VITE_SENTRY_DSN: z.string().url().optional(),
