@@ -46,7 +46,7 @@
 - [x] 01-02-PLAN.md — Rebrand nashsklad → oborot across package.json, Google Apps Script header, launch.json, lockfile
 - [x] 01-03-PLAN.md — Zod env validators + root .env.example + per-app READMEs (10-min onboarding)
 - [x] 01-04-PLAN.md — Vitest + RTL: smoke tests + useForm unit coverage + env.test
-- [ ] 01-05-PLAN.md — Sentry SDK install + init (both apps, client/server/edge) + console.error migration
+- [x] 01-05-PLAN.md — Sentry SDK install + init (both apps, client/server/edge) + console.error migration
 - [ ] 01-06-PLAN.md — Shared ESLint v9 flat config with no-console:error enforcing FOUND-05 durability
 - [ ] 01-07-PLAN.md — GitHub Actions CI matrix (lint + test + build) on every PR and push to main
 - [ ] 01-08-PLAN.md — Cloudflare Pages migration + DNS cutover + Railway decommission
@@ -134,7 +134,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation & Repo Cleanup | 4/8 | In progress | - |
+| 1. Foundation & Repo Cleanup | 5/8 | In progress | - |
 | 2. Lead Capture Migration + Demo Mode | 0/TBD | Not started | - |
 | 3. Auth & Multi-Tenant Foundation | 0/TBD | Not started | - |
 | 4. Module Architecture + First Two Modules | 0/TBD | Not started | - |

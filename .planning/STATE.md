@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-04-PLAN.md
-last_updated: "2026-04-21T09:06:30.000Z"
+stopped_at: Completed 01-05-PLAN.md
+last_updated: "2026-04-21T09:14:33.000Z"
 last_activity: 2026-04-21
 progress:
   total_phases: 7
   completed_phases: 0
   total_plans: 8
-  completed_plans: 4
-  percent: 50
+  completed_plans: 5
+  percent: 63
 ---
 
 # Project State
@@ -26,11 +26,11 @@ See: .planning/PROJECT.md (updated 2026-04-21)
 ## Current Position
 
 Phase: 01 (Foundation & Repo Cleanup) — EXECUTING
-Plan: 5 of 8
+Plan: 6 of 8
 Status: Ready to execute
 Last activity: 2026-04-21
 
-Progress: [█████░░░░░] 50%
+Progress: [██████░░░░] 63%
 
 ## Performance Metrics
 
@@ -56,6 +56,7 @@ Progress: [█████░░░░░] 50%
 | Phase 01 P02 | 2min | 3 tasks | 6 files |
 | Phase 01 P03 | 4min | 3 tasks tasks | 15 files files |
 | Phase 01 P04 | 2min | 2 tasks | 12 files |
+| Phase 01 P05 | 4min | 3 tasks (+1 checkpoint deferred) | 14 files |
 
 ## Accumulated Context
 
@@ -82,6 +83,13 @@ Recent decisions affecting current work:
 - Plan 01-04: Zod v4 `.issues` + Vite TLA gotchas from Wave 3 stayed dormant — env.test.js uses Vitest runtime (no Vite build path), env validator's `.issues` already fixed in Plan 03
 - Plan 01-04: `typeof RootLayout === 'function'` smoke instead of render — avoids jsdom nested-html crash (RESEARCH Pitfall 4)
 - Plan 01-04: app vitest.setup.js pre-populates synthetic `NEXT_PUBLIC_SUPABASE_*` so RootLayout's `import '../lib/env'` side-effect survives test boot
+- Plan 01-05: Assumption A1 VERIFIED — `reactRouterV7BrowserTracingIntegration` present in @sentry/react 10.49.0 (no V6 fallback needed)
+- Plan 01-05: manual Sentry setup preferred over wizard — wizard favors Next 15+ and silently skips the Next-14 `experimental.instrumentationHook: true` flag (RESEARCH Pitfall 2)
+- Plan 01-05: preserved main.jsx `.then()/.catch()` chain instead of plan-template top-level await — Vite ES2020 rejects TLA (Plan 03 gotcha carried forward); `Sentry.init` runs inside the env-load `.then()` callback
+- Plan 01-05: Task 4 (checkpoint:human-action for Sentry DSN) auto-deferred per execution prompt — all code paths no-op when DSN absent; account creation scheduled post-Wave-6
+- Plan 01-05: replayIntegration only in client config (browser-only API); server/edge configs omit it
+- Plan 01-05: direct `Sentry.captureException(e, {tags: {op: ...}})` calls — no logger wrapper (5 sites don't justify abstraction per PATTERNS §A)
+- Plan 01-05: grep for `console.error` in source MUST exclude `dist/` and `.next/` — bundled React internals produce false positives; Plan 06 ESLint glob to follow suit
 
 ### Pending Todos
 
@@ -117,8 +125,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: 2026-04-21T09:06:30.000Z
-Stopped at: Completed 01-04-PLAN.md
+Last session: 2026-04-21T09:14:33.000Z
+Stopped at: Completed 01-05-PLAN.md
 Resume file: None
 
 **Planned Phase:** 1 (Foundation & Repo Cleanup) — 8 plans — 2026-04-21T05:12:34.537Z
