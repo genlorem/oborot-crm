@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: planning
-stopped_at: Phase 1 context gathered
-last_updated: "2026-04-21T05:12:34.541Z"
-last_activity: 2026-04-21 — GSD roadmap created from intel ingest (14 requirements from ROADMAP.md as PRD, filtered to engineering-only, 35 v1 items).
+status: executing
+stopped_at: Completed 01-01-PLAN.md
+last_updated: "2026-04-21T07:29:51.668Z"
+last_activity: 2026-04-21
 progress:
   total_phases: 7
   completed_phases: 0
   total_plans: 8
-  completed_plans: 0
-  percent: 0
+  completed_plans: 1
+  percent: 13
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-21)
 
 **Core value:** Продавец, живущий на маркетплейсах, может вести учёт и смотреть аналитику без прослоек и без потери данных — нативные интеграции WB/Ozon/ЯМ + бесконечное хранение истории.
-**Current focus:** Phase 1 — Foundation & Repo Cleanup
+**Current focus:** Phase 01 — Foundation & Repo Cleanup
 
 ## Current Position
 
-Phase: 1 of 7 (Foundation & Repo Cleanup)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-04-21 — GSD roadmap created from intel ingest (14 requirements from ROADMAP.md as PRD, filtered to engineering-only, 35 v1 items).
+Phase: 01 (Foundation & Repo Cleanup) — EXECUTING
+Plan: 2 of 8
+Status: Ready to execute
+Last activity: 2026-04-21
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 13%
 
 ## Performance Metrics
 
@@ -52,6 +52,7 @@ Progress: [░░░░░░░░░░] 0%
 - Trend: — (no data yet)
 
 *Updated after each plan completion*
+| Phase 01 P01 | 2min | 3 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -66,6 +67,9 @@ Recent decisions affecting current work:
 - Pre-Phase 1: Industry-modules = core + shells (не отдельные приложения) — Phase 4
 - Pre-Phase 1: Infinite analytics retention — архитектурное решение с v1, закладываем в Phase 5
 - Pre-Phase 1: GSD управляет только engineering; маркетинг (500k ₽ на посевы/VK/YouTube/PR/выставку/печать) остаётся в корневом `ROADMAP.md`
+- Plan 01-01: committed .gitignore before 18-file deletion so .DS_Store ignored immediately (bisect-friendly hygiene order)
+- Plan 01-01: framer-motion removed from apps/landing (zero import sites; landing build 240.81 kB ok)
+- Plan 01-01: explicit per-path git add for deletions to exclude unrelated STATE.md mod from the cleanup commit
 
 ### Pending Todos
 
@@ -101,8 +105,8 @@ Items acknowledged and carried forward from previous milestone close:
 
 ## Session Continuity
 
-Last session: --stopped-at
-Stopped at: Phase 1 context gathered
-Resume file: --resume-file
+Last session: 2026-04-21T07:29:51.665Z
+Stopped at: Completed 01-01-PLAN.md
+Resume file: None
 
 **Planned Phase:** 1 (Foundation & Repo Cleanup) — 8 plans — 2026-04-21T05:12:34.537Z

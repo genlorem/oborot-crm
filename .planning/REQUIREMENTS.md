@@ -32,7 +32,8 @@
 
 ### Foundation (инфра/монорепо/CI)
 
-- [ ] **FOUND-01**: Монорепо приведено в порядок: удалены старые root-файлы из git, переименован пакет `nashsklad` → `oborot-crm`, `apps/landing/google-apps-script.js` и упоминания "НашСклад" заменены на "Оборот"
+- [x] **FOUND-01
+**: Монорепо приведено в порядок: удалены старые root-файлы из git, переименован пакет `nashsklad` → `oborot-crm`, `apps/landing/google-apps-script.js` и упоминания "НашСклад" заменены на "Оборот"
 - [ ] **FOUND-02**: На обоих приложениях (`apps/landing`, `apps/app`) настроены `.env.example`, валидация обязательных env vars на старте, документированный `README.md` для локального запуска и деплоя
 - [ ] **FOUND-03**: Настроен минимальный testing-стек (Vitest + React Testing Library) в обоих приложениях; хотя бы один smoke-тест в каждом
 - [ ] **FOUND-04**: Настроен CI (GitHub Actions) — lint + test на каждый PR в main
