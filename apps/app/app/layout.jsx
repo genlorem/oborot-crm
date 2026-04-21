@@ -1,4 +1,5 @@
 import './globals.css'
+import '../lib/env'
 
 export const metadata = {
   title: 'Оборот',
