@@ -1,4 +1,17 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const { withSentryConfig } = require('@sentry/nextjs')
 
-module.exports = nextConfig
+const nextConfig = {
+  experimental: {
+    instrumentationHook: true, // REQUIRED for Next 14; removed in Next 15+
+  },
+}
+
+module.exports = withSentryConfig(nextConfig, {
+  org: 'oborotcrm',
+  project: 'app',
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+})
